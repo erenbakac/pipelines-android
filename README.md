@@ -1,4 +1,4 @@
-
+[![Build Status](https://dev.azure.com/bakaceren/PipelineTest/_apis/build/status/erenbakac.pipelines-android%20(1)?branchName=master)](https://dev.azure.com/bakaceren/PipelineTest/_build/latest?definitionId=3&branchName=master)
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
