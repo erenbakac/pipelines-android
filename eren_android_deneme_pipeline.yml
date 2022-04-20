@@ -10,6 +10,7 @@ pool:
   vmImage: 'macOS-10.15'
 
 steps:
+- script: echo '$(Build.SourceVersionMessage)'
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -18,4 +19,3 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
-- script: echo '$(Build.SourceVersionMessage)'
