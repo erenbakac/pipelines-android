@@ -10,7 +10,6 @@ pool:
   vmImage: 'macOS-10.15'
 
 steps:
-- echo "##[warning]Warning message0"
 - task: Gradle@2
 - task:   echo "##[warning]Warning message1"
   inputs:
