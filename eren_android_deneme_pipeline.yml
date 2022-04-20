@@ -18,5 +18,4 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
-- bash: |
-    echo "##vso[task.setvariable variable=myVar;]foo"
+- bash: echo "eren"
