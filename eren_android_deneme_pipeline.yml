@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 variables:
-  isMain: $[containsValue(variables['Build.SourceVersionMessage'], 'WillTest')]
+  isMain: $[containsValue('WillTest',variables['Build.SourceVersionMessage'])]
 
 trigger:
 - "*"
