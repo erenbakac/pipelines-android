@@ -3,12 +3,14 @@
 # Add steps that test, sign, and distribute the APK, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
-
+parameters:
+  - name: 'words'
+    type: string
+    default:
+      - WillTest
+      - CreateApk
+      - bob
 variables:
-  words:
-   - WillTest
-   - CreateApk
-   - bob
   isMain: $[contains(variables['Build.SourceVersionMessage'], words.*)]
 
 trigger:
