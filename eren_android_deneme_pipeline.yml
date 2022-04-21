@@ -4,7 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 variables:
-  isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest')]
+  wordList: ['WillTest','Create Apk']
+  ${{ each p in variables.wordList }}:
+  isMain: $[contains(variables['Build.SourceVersionMessage'], p)]
+ 
 
 trigger:
 - "*"
