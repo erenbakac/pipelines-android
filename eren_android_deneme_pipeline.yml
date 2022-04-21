@@ -4,14 +4,16 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 parameters:
-  - name: 'words'
-    type: string
+
+  - name: pipelinesWords
+    type: object  
     default:
-      - WillTest
-      - CreateApk
-      - bob
+    - { Name: WillCreate, Path: path1 }
+    - { Name: CreateApk, Path: path2 }
+    - { Name: pipeline3, Path: path3 }
+
 variables:
-  isMain: $[contains(variables['Build.SourceVersionMessage'], words.*)]
+  isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest')]
 
 trigger:
 - "*"
