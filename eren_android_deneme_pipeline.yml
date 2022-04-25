@@ -10,6 +10,7 @@ parameters:
     - { Name: WillCreate }
     - { Name: CreateApk }
     - { Name: pipeline3 }
+    
 
 variables:
   hasValue : false
@@ -26,6 +27,8 @@ stages:
   jobs:
   - job: A1
     steps:
+      - ${{ each word in parameters.pipelinesWords }}:
+      - script:  echo word 
       - script: echo Hello Stage  A!
       - script: echo $(isMain)
 
