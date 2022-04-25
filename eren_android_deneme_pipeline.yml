@@ -10,7 +10,12 @@ parameters:
   default:
     - refs/heads/main
     - refs/heads/test
+trigger:
+- "*"
 
+pool:
+  vmImage: 'macOS-10.15'
+  
 jobs:
   - job: A1 
     steps:
