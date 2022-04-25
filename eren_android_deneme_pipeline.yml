@@ -4,35 +4,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 parameters:
+- name: branchOptions
+  displayName: Source branch options
+  type: object
+  default:
+    - refs/heads/main
+    - refs/heads/test
 
-  - name: pipelinesWords
-    type: object  
-    default:
-    - WillCreate 
-    - CreateApk 
-    - pipeline3 
-
-variables:
-  isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest')]
-
-trigger:
-- "*"
-
-pool:
-  vmImage: 'macOS-10.15'
-
-stages:
-- stage: A
-  jobs:
-  - job: A1
+jobs:
+  - job: A1 
     steps:
-      - ${{ each value in parameters.pipelinesWords }}:
+    - ${{ each value in parameters.branchOptions }}:
       - script: echo ${{ value }}
 
-- stage: B
-  condition: and(succeeded(), eq(variables.isMain, 'true'))
-  jobs:
-  - job: B1
+  - job: B1 
+    condition: ${{ containsValue(parameters.branchOptions, variables['Build.SourceBranch']) }}
     steps:
-      - script: echo Hello Stage B!
-      - script: echo $(isMain)
+      - script: echo "Matching branch found"
