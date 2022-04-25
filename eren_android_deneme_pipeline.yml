@@ -27,8 +27,8 @@ stages:
   jobs:
   - job: A1
     steps:
-      - ${{ each word in parameters.pipelinesWords }}:
-      - script: echo ${{ word }} 
+      - ${{ each p in parameters.pipelinesWords }}:
+       - script: echo ${{ p }}
       - script: echo Hello Stage  A!
       - script: echo $(isMain)
 
