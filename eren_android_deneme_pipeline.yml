@@ -26,8 +26,8 @@ stages:
   jobs:
   - job: A1
     steps:
-      - script: echo Hello Stage  A!
-      - script: echo $(isMain)
+      - ${{ each value in parameters.pipelinesWords }}:
+      - script: echo ${{ value }}
 
 - stage: B
   condition: and(succeeded(), eq(variables.isMain, 'true'))
