@@ -8,9 +8,9 @@ parameters:
   - name: pipelinesWords
     type: object  
     default:
-    - { Name: WillCreate }
-    - { Name: CreateApk }
-    - { Name: pipeline3 }
+    - WillCreate 
+    - CreateApk 
+    - pipeline3 
 
 variables:
   isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest')]
