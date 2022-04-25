@@ -4,16 +4,15 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 parameters:
+
   - name: pipelinesWords
     type: object  
     default:
     - { Name: WillCreate }
     - { Name: CreateApk }
     - { Name: pipeline3 }
-    
 
 variables:
-  hasValue : false
   isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest')]
 
 trigger:
@@ -27,8 +26,6 @@ stages:
   jobs:
   - job: A1
     steps:
-      - ${{ each p in parameters.pipelinesWords }}:
-       - script: echo ${{ p.Name }}
       - script: echo Hello Stage  A!
       - script: echo $(isMain)
 
