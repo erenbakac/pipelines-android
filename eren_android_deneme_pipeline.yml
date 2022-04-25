@@ -22,12 +22,7 @@ pool:
   vmImage: 'macOS-10.15'
 
 stages:
-- stage: A
-  jobs:
-  - job: A1
-    steps:
-      - script: echo Hello Stage  A!
-      - script: echo $(isMain)
+
 
 - stage: B
   condition: ${{ containsValue(parameters.pipelinesWords, variables['Build.SourceVersionMessage']) }}
