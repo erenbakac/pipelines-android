@@ -13,7 +13,7 @@ parameters:
     - pipeline3
 
 variables:
-  isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest')]
+  isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest1')]
 
 trigger:
 - "*"
