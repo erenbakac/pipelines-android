@@ -5,12 +5,19 @@
 
 parameters:
 
-  - name: pipelinesWords
+  - name: triggerWords
     type: object  
     default:
     - WillCreate
     - CreateApk
     - pipeline3
+    
+
+  - name: buildVariants
+    type: object
+    default:
+    - assembleProd
+    - assembleMock 
 
 trigger:
 - "*"
@@ -21,7 +28,7 @@ pool:
 stages:
 
 - stage: Check_Commit_Message
-  condition: ${{ containsValue(parameters.pipelinesWords, variables['Build.SourceVersionMessage']) }}
+  condition: ${{ containsValue(parameters.triggerWords, variables['Build.SourceVersionMessage']) }}
   jobs:
   - job: Job1
     steps:
@@ -35,14 +42,15 @@ stages:
   jobs:
   - job: Job2
     steps:
-      - script: echo Start building! 
-      - task: Gradle@2
-        inputs:
-          workingDirectory: ''
-          gradleWrapperFile: 'gradlew'
-          gradleOptions: '-Xmx3072m'
-          publishJUnitResults: false
-          testResultsFiles: '**/TEST-*.xml'
-          tasks: 'assembleProd1'
+      - script: echo Start building!
+      - ${{ each project in parameters.buildVariants }}: 
+        - task: Gradle@2
+          inputs:
+            workingDirectory: ''
+            gradleWrapperFile: 'gradlew'
+            gradleOptions: '-Xmx3072m'
+            publishJUnitResults: false
+            testResultsFiles: '**/TEST-*.xml'
+            tasks: ${{ project }}
 
 
