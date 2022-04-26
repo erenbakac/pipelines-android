@@ -16,8 +16,8 @@ parameters:
   - name: buildVariants
     type: object
     default:
-    - assembleProd
-    - assembleMock 
+    - Prod
+    - Mock 
 
 trigger:
 - "*"
@@ -51,6 +51,6 @@ stages:
             gradleOptions: '-Xmx3072m'
             publishJUnitResults: false
             testResultsFiles: '**/TEST-*.xml'
-            tasks: ${{ project }}
+            tasks: 'assemble${{ project }}'
 
 
