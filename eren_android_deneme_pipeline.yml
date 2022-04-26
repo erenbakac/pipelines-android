@@ -35,4 +35,4 @@ stages:
   jobs:
   - job: Job2
     steps:
-      - script: echo Start building!
+      - script: echo Start building! 
