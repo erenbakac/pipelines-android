@@ -20,7 +20,7 @@ pool:
 
 stages:
 
-- stage: Check Commit Message
+- stage: Check_Commit_Message
   condition: ${{ containsValue(parameters.pipelinesWords, variables['Build.SourceVersionMessage']) }}
   jobs:
   - job: B1
