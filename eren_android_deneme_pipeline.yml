@@ -37,7 +37,7 @@ stages:
   - job: Job1
     steps:
       - script: echo Commit is valid!
-      - ${{ each project in variables.prod_vmnames }}: 
+      - ${{ each project in prod_vmnames }}: 
         - script: echo Started for 'EREN -> ${{ project }}'
 
 
