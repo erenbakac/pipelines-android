@@ -51,6 +51,6 @@ stages:
             gradleOptions: '-Xmx3072m'
             publishJUnitResults: false
             testResultsFiles: '**/TEST-*.xml'
-            tasks: 'assemble${{ project }}'
+            tasks: 'assemble${{ project }}' 
 
 
