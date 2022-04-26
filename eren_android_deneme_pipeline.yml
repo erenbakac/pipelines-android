@@ -44,7 +44,7 @@ stages:
     steps:
       - script: echo Start building!
       - ${{ each project in parameters.buildVariants }}: 
-        - script: Started for 'assemble${{ project }}'
+        - script: echo Started for 'assemble${{ project }}'
         - task: Gradle@2
           inputs:
             workingDirectory: ''
