@@ -12,9 +12,6 @@ parameters:
     - CreateApk
     - pipeline3
 
-variables:
-  isMain: $[contains(variables['Build.SourceVersionMessage'], 'WillTest1')]
-
 trigger:
 - "*"
 
@@ -23,11 +20,9 @@ pool:
 
 stages:
 
-
-- stage: B
+- stage: Check Commit Message
   condition: ${{ containsValue(parameters.pipelinesWords, variables['Build.SourceVersionMessage']) }}
   jobs:
   - job: B1
     steps:
-      - script: echo Hello Stage B!
-      - script: echo $(isMain)
+      - script: echo Commit is valid!
