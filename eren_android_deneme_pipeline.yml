@@ -60,7 +60,7 @@ stages:
             apksignerKeystorePassword: 'Eren1234.'
             apksignerKeystoreAlias: 'key0'
             apksignerKeyPassword: 'Eren1234.'
-            apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/my-crazy-app.release.apk
+            apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/{{ project }}.apk
             zipalign: true
         - task: CopyFiles@2
           displayName: 'Copy Files'
