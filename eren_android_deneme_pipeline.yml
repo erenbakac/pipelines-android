@@ -57,12 +57,12 @@ stages:
           inputs:
             SourceFolder: $(Build.SourcesDirectory)
             contents: '**/*.apk'
-            targetFolder: '$(build.artifactStagingDirectory)'
+            targetFolder: '$(build.artifactStagingDirectory)/${{ project }}'
         - task: PublishBuildArtifacts@1
           continueOnError: false
           displayName: "Publish to azure"
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName:   'debug'   
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/${{ project }}'
+            ArtifactName:   'debug${{ project }}'   
 
 
