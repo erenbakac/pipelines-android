@@ -52,6 +52,16 @@ stages:
             publishJUnitResults: false
             testResultsFiles: '**/TEST-*.xml'
             tasks: 'assemble${{ project }}' 
+        - task: AndroidSigning@3
+          inputs:
+            apkFiles: '**/*.apk'
+            apksign: true
+            apksignerKeystoreFile: 'tutorial'
+            apksignerKeystorePassword: 'Eren1234.'
+            apksignerKeystoreAlias: 'key0'
+            apksignerKeyPassword: 'Eren1234.'
+            apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/my-crazy-app.release.apk
+            zipalign: true
         - task: CopyFiles@2
           displayName: 'Copy Files'
           inputs:
