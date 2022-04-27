@@ -72,7 +72,7 @@ stages:
           continueOnError: false
           displayName: "Publish to azure"
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)/${{ project }}'
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/${{ project }}' 
             ArtifactName:   'debug${{ project }}'   
 
 
