@@ -56,7 +56,7 @@ stages:
           inputs:
             apkFiles: '**/*.apk'
             apksign: true
-            apksignerKeystoreFile: 'Tutorial'
+            apksignerKeystoreFile: 'Tutorial.jks'
             apksignerKeystorePassword: 'Eren1234.'
             apksignerKeystoreAlias: 'key0'
             apksignerKeyPassword: 'Eren1234.'
