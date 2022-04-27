@@ -36,7 +36,6 @@ stages:
 
 
 
-
 - stage: BuildApp    
   dependsOn: Check_Commit_Message
   jobs:
@@ -53,5 +52,17 @@ stages:
             publishJUnitResults: false
             testResultsFiles: '**/TEST-*.xml'
             tasks: 'assemble${{ project }}' 
+        - task: CopyFiles@2
+          displayName: "Copy files"
+          continueOnError: false
+          inputs:
+            Contents: ${apkFilePath}
+            targetFolder: '$(Build.ArtifactStagingDirectory)'
+        - task: PublishBuildArtifacts@1
+          continueOnError: false
+          displayName: "Publish to azure"
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName:   'debug'   
 
 
